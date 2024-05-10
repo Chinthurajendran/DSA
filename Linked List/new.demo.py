@@ -11,9 +11,9 @@ class Linked_list:
         if self.head is None:
             print("List is ematy")
         else:
-            n = self.head 
+            n = self.head
             while n is not None:
-                print(n.data,end=" ")
+                print(n.data)
                 n = n.ref
 
     def add(self,data):
@@ -21,25 +21,105 @@ class Linked_list:
         new_node.ref = self.head
         self.head = new_node
 
-    def duplicate(self):
-        current = self.head
-        while current is not None:
-            runner = current
-            while runner.ref is not None:
-                if runner.ref.data == current.data:
-                    runner.ref = runner.ref.ref
-                else:
-                    runner = runner.ref
-            current = current.ref
+    def end(self,data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+        else:
+            n = self.head
+            while n.ref is not None:
+                n = n.ref
+            n.ref = new_node
+
+    def after(self,data,x):
+        n = self.head
+        while n is None:
+            if n.data == x:
+                break
+            n=n.ref
+        if n is None:
+            print("node is none")
+        else:
+            new_node = Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node
+
+    def befor(self,data,x):
+        if self.head is None:
+            print("list is ematy")
+            return
+        
+        if self.head == x:
+            new_node = Node(data)
+            new_node.ref = self.head
+            self.head = new_node
+            return
+        
+        n = self.head
+        while n.ref is not None:
+            if n.ref.data == x:
+                break
+            n = n.ref
+        if n.ref is not None:
+            print("node is none")
+        else:
+            new_node =Node(data)
+            new_node.ref = n.ref
+            n.ref = new_node
+
+    def first_delete(self):
+        if self.head is None:
+            print("List is ematy")
+        else:
+            self.head = self.head.ref
+
+    def end_delete(self):
+        if self.head is None:
+            print("List is ematy")
+        elif self.head.ref is None:
+            self.head = None
+        else:
+            n = self.head
+            while n.ref.ref is not None:
+                n = n.ref
+            n.ref = None
+
+    def delete_list(self,x):
+        if self.head is None:
+            print("list is ematy")
+            return
+        
+        if self.head == x:
+            self.head = self.head.ref
+            return
+        
+        n = self.head
+        while n.ref is not None:
+            if n.ref.data == x:
+                break
+            n = n.ref
+        if n.ref is None:
+            print("node is none")
+        else:
+            n.ref = n.ref.ref
+
+
 
 
 data = Linked_list()
 
-list1 = [10,20,10,30,50,60,50,30,40]
-list1.sort()
-for i in list1:
-    data.add(i)
+data.add(20)
+data.add(50)
 
-data.duplicate()
+data.end(80)
+
+data.after(150,20)
+
+data.befor(800,50)
+
+data.first_delete()
+data.end_delete()
+
+data.delete_list(20)
 
 data.print_list()
