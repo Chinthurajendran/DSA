@@ -34,7 +34,6 @@ class HashTable:
             if node.key == key:
                 return node.value
             node = node.next
-
         return None
 
     def display(self):

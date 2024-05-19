@@ -1,41 +1,37 @@
-stack = []
-stack.append(10)
-stack.append(20)
-print(stack)
-stack.pop()
-print(stack)
+# import collections
+# stack =  collections.deque()
+# stack.append(10)
+# stack.append(20)
+# stack.append(30)
+# print(stack)
+# stack.pop()
+# print(stack)
 
 
-stack = []
-def puch():
-    if len(stack) == limit:
-        print("List is full")
-    else:
-        data = int(input("Enter the values :"))
-        stack.append(data)
-        print("Added")
-        print(stack)
+import queue
+stack = queue.LifoQueue()
+stack.put(60)
+stack.put(70)
+stack.put(80)
+stack.get()
+while not stack.empty():
+    items = stack.get()
+    print(items)
 
+import collections
+queu = collections.deque()
+queu.appendleft(10)
+queu.append(20)
+queu.append(30)
+print(queu)
+queu.pop()
+print(queu)
 
-
-def pop():
-    if stack is None:
-        print("list is ematy")
-    else:
-        stack.pop()
-        print(stack)
-
-limit = int(input("Enter the limit :"))
-while True:
-    print("Select the options \n 1.Push \n 2.Pop \n 3.Quit")
-    choice = int(input("Enter:"))
-    if choice == 1:
-        puch()
-    elif choice == 2:
-        pop()
-    elif choice == 3:
-        break
-    else:
-        print("Enter the correct options")
-
-
+import queue
+new = queue.Queue()
+new.put(100)
+new.put(200)
+new.get()
+while not new.empty():
+    items = new.get()
+    print(items)
