@@ -53,5 +53,6 @@ info.add(4,"march 19")
 info.add(5,"march 20")
 info.add(6,"march 21")
 info.add(7,"march 22")
+print(info.get_data(7))
 
 info.display()

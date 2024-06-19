@@ -1,27 +1,25 @@
 class Graph:
     def __init__(self):
-        self.dict ={}
+        self.dic = {}
     
-    def add_vertix(self,data):
-        self.dict[data] = []
+    def add(self,data):
+        self.dic[data] = []
     
-    def insert(self,vertix,edage,value):
-
-        if vertix not in self.dict:
-            self.add_vertix(vertix)
+    def insert(self,vertix,edge,value):
+        if vertix not in self.dic:
+            self.add(vertix)
         
-        if edage not in self.dict:
-            self.add_vertix(edage)
-        self.dict[vertix].append(edage)
+        if edge not in self.dic:
+            self.add(edge)
+        
+        self.dic[vertix].append(edge)
 
         if value:
-            self.dict[edage].append(vertix)
+            self.dic[edge].append(vertix)
     
     def display(self):
-        for x in self.dict:
-            print(f"{x}:{" ".join(map(str,self.dict[x]))}")
-
-        
+        for x in self.dic:
+            print(f"{x}: {' '.join(map(str,self.dic[x]))}")
 
 
 graph = Graph()

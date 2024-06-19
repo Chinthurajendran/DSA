@@ -1,35 +1,37 @@
-class TrieNode:
+class Trienode:
     def __init__(self):
-        self.children  = {}
+        self.child ={}
         self.end = False
 
 class Trie:
     def __init__(self):
-        self.root = TrieNode()
+        self.root = Trienode()
     
     def insert(self,word):
         node = self.root
         for char in word:
-            if char not in node.children:
-                node.children[char] = TrieNode()
-            node = node.children[char]
+            if char not in node.child:
+                node.child[char] = Trienode()
+            node = node.child[char]
         node.end = True
     
     def search(self,word):
         node = self.root
         for char in word:
-            if char not in node.children:
+            if char not in node.child:
                 return False
-            node = node.children[char]
+            node = node.child[char]
         return node.end
     
     def starts_with(self,word):
         node = self.root
         for char in word:
-            if char not in node.children:
+            if char not in node.child:
                 return False
-            node = node.children[char]
+            node = node.child[char]
         return True
+
+
 
 
 trie = Trie()

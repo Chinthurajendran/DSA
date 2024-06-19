@@ -3,79 +3,77 @@ class Node:
         self.data = data
         self.ref = None
 
-class Linked_list:
+class linked_list:
     def __init__(self):
         self.head = None
-
-    def print_list(self):
+    
+    def print_all(self):
         if self.head is None:
-            print("List is ematy")
+            print("List is empty")
         else:
             n = self.head
             while n is not None:
                 print(n.data)
                 n = n.ref
-
-    def add(self,data):
+    
+    def start(self,data):
         new_node = Node(data)
         new_node.ref = self.head
         self.head = new_node
-
+    
     def end(self,data):
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
         else:
             n = self.head
-            while n.ref is not None:
+            while n .ref is not None:
                 n = n.ref
             n.ref = new_node
-
+    
     def after(self,data,x):
         n = self.head
-        while n is None:
-            if n.data == x:
+        while n is not None:
+            if x == n.data:
                 break
-            n=n.ref
+            n = n.ref
         if n is None:
-            print("node is none")
+            print("Value not found")
         else:
             new_node = Node(data)
             new_node.ref = n.ref
             n.ref = new_node
-
+    
     def befor(self,data,x):
         if self.head is None:
-            print("list is ematy")
+            print("List is empty")
             return
-        
-        if self.head == x:
+        if self.head.data == x:
             new_node = Node(data)
             new_node.ref = self.head
             self.head = new_node
             return
-        
-        n = self.head
+        n =self.head
         while n.ref is not None:
             if n.ref.data == x:
                 break
             n = n.ref
-        if n.ref is not None:
-            print("node is none")
+        if n is None:
+            print("value not found")
         else:
-            new_node =Node(data)
+            new_node = Node(data)
             new_node.ref = n.ref
             n.ref = new_node
-
-    def first_delete(self):
+    
+    def delete_start(self):
         if self.head is None:
-            print("List is ematy")
+            print("List is empty")
         else:
             self.head = self.head.ref
-
-    def end_delete(self):
+    
+    def delete_end(self):
         if self.head is None:
-            print("List is ematy")
+            print("list is empty")
         elif self.head.ref is None:
             self.head = None
         else:
@@ -83,43 +81,35 @@ class Linked_list:
             while n.ref.ref is not None:
                 n = n.ref
             n.ref = None
-
-    def delete_list(self,x):
+    
+    def delete_value(self,x):
         if self.head is None:
-            print("list is ematy")
+            print("List is empty")
             return
-        
-        if self.head == x:
+        if self.head.data == x:
             self.head = self.head.ref
             return
         
         n = self.head
-        while n.ref is not None:
+        while n.ref.ref is not None:
             if n.ref.data == x:
                 break
             n = n.ref
         if n.ref is None:
-            print("node is none")
+            print("Value is not found")
         else:
             n.ref = n.ref.ref
+        
+    
+        
 
-
-
-
-data = Linked_list()
-
-data.add(20)
-data.add(50)
-
-data.end(80)
-
-data.after(150,20)
-
-data.befor(800,50)
-
-data.first_delete()
-data.end_delete()
-
-data.delete_list(20)
-
-data.print_list()
+list = linked_list()
+list.start(10)
+list.start(20)
+list.end(100)
+list.after(75,10)
+list.befor(85,10)
+list.delete_start()
+list.delete_end()
+list.delete_value(10)
+list.print_all()

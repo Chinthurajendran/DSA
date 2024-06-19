@@ -30,12 +30,13 @@ class hash_table:
     def display_pairs(self):
         print("Key-Value Pairs:")
         for index, item in enumerate(self.table):
-            print(f"{index}: {item}")
-    
+            print(f"index {index}: {item}")
+
 
 
 info = hash_table(10)
 # info.add(5)
 info.add('chinthu',5)
+info.add('sanju',10)
 print(info.get('chinthu'))
 info.display_pairs()

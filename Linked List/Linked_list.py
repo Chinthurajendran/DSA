@@ -104,6 +104,26 @@ class Linked_list:
             print("not match")
         else:
             n.ref = n.ref.ref
+    
+    def index(self):
+        node = self.head
+        indx = 0
+        while node is not None:
+            print(f'{indx}:{node.data}')
+            indx+=1
+            node = node.ref
+    
+    def search(self,x):
+        node = self.head
+        indx = 0
+        found =  False
+        while node is not None:
+            if node.data == x:
+                print(indx)
+                break
+            node = node.ref
+            indx+=1
+
 
 
 
@@ -113,7 +133,7 @@ LL1.add_begin(30)
 LL1.add_begin(50)
 
 # LL1.add_end(100)
-# LL1.add_after(5,20)
+LL1.add_after(5,20)
 # LL1.add_befor(900,20)
 # LL1.list_empty(8520)
 # LL1.first_delete()

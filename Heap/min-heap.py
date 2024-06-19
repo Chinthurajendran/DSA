@@ -46,6 +46,6 @@ min_heap.insert(3)
 min_heap.insert(8)
 min_heap.insert(1)
 
-min_heap.remove(5)
+min_heap.remove(3)
 
 print("Heap after extracting minimum:", min_heap.head)
