@@ -1,25 +1,15 @@
-def binnery(list,key):
-    if len(list) > 1:
-        low = 0 
-        hight = len(list)-1
-        found =  False
+def checkOnesSegment(s: str) -> bool:
+    # Split the string by '0's
+    segments = s.split('0')
+    print(segments)
+    
+    # Count the number of non-empty segments
+    count_of_ones_segments = sum(1 for segment in segments if segment)
+    print(count_of_ones_segments)
+    
+    # Return true if there is at most one non-empty segment
+    return count_of_ones_segments <= 1
 
-        while low <= hight and not found:
-            mid = (low+hight)//2
-
-            if key  == list[mid]:
-                found = True
-            elif key > list[mid]:
-                low = mid+1
-            else:
-                hight =  mid -1
-        
-        if found ==  True:
-            print("true")
-        else:
-            print("Fasle")
-
-
-list=[2,6,3,5,7,23,56,78,88,22,100]
-key = 1
-binnery(list,key)
+# Test the function with the example input
+s = "110"
+print(checkOnesSegment(s))  # Output: false

@@ -10,3 +10,10 @@ def capiital(string):
 
 string = input("Enter a value:")
 print(capiital(string))
+
+
+name =  'my name is chinthu'
+word = name.split()
+print(word)
+data  = word[::-1]
+print(data)

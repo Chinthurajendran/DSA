@@ -1,69 +1,46 @@
-def bubble_sort(list):
-    for i in range(len(list)):
-        for j in range(i+1,len(list)):
-            if list[i] > list[j]:
-                list[i],list[j] = list[j],list[i]
+class Node:
+    def __init__(self,key,value):
+        self.key = key
+        self.value = value
+        self.ref = None
 
-bubble = [38, 27, 43, 3, 9, 82, 10]
-bubble_sort(bubble)
-print(bubble)
+class hash_table:
+    def __init__(self,size):
+        self.size = size
+        self.table = [None]*size
+    
+    def hash_value(self,key):
+        return hash(key)%self.size
+    
+    def insert(self,key,value):
+        index = self.hash_value(str(key))
+        if self.table[index] is None:
+            self.table[index] = Node(key,value)
+        else:
+            node = self.table[index]
+            while node.ref is not None:
+                node = node.ref
+            node.ref =self.table[index]
+    
+    def search(self,key):
+        index = self.hash_value(str(key))
+        node = self.table[index]
+        while node is not None:
+            if node.key == key:
+                return node.value
+            node = node.ref
+        return None
+    
+    def display(self):
+        for index,node in enumerate(self.table):
+            print(f'index :{index}',end=" ")
+            while node is not None:
+                print(f'{[node.key],[node.value]}',end=" ")
+                node = node.ref
+            print('None')
 
-def insertion_sort(list):
-    for i in range(len(list)):
-        j = i
-        while list[j-1]> list[j] and j >0:
-            list[j],list[j-1]=list[j-1],list[j]
-            j-=1 
-
-insetion = [38, 27, 43, 3, 9, 82, 10]
-insertion_sort(insetion)
-print(insetion)
-
-def selection_sort(list):
-    n = len(list)
-    for i in range(n-1):
-        mid = i
-        for j in range(i+1,n):
-            if list[j] < list[mid]:
-                mid = j
-        list[i],list[mid]=list[mid],list[i]
-
-selection = [38, 27, 43, 3, 9, 82, 10]
-selection_sort(selection)
-print(selection)
-
-
-def merge_sort(list):
-    if len(list)>1:
-        mid = len(list)//2
-        left = list[:mid]
-        right = list[mid:]
-
-        merge_sort(left)
-        merge_sort(right)
-
-        i=j=k = 0
-
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                list[k] = left[i]
-                i+=1
-            else:
-                list[k] = right[j]
-                j+=1
-            k+=1
-
-        while i < len(left):
-            list[k]=left[i]
-            i+=1
-            k+=1
-            
-        while j < len(right):
-            list[k] = right[j]
-            j+=1
-            k+=1
-            
-
-merge = [38, 27, 43, 3, 9, 82, 10]
-merge_sort(merge)
-print(merge)
+data = hash_table(10)
+data.insert(1,'chinthu')
+data.insert(2,'sanju')
+print(data.search(1))
+data.display()

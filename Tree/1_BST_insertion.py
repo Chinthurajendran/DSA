@@ -10,10 +10,10 @@ class Node:
                return
           
           if self.key > data:
-               if self.left_child:
+               if self.left_child:  #not None
                     self.left_child.insert(data)
                else:   
-                    self.left_child = Node(data)
+                    self.left_child = Node(data) #adding value
           else:
                if self.right_child:
                     self.right_child.insert(data)
@@ -100,11 +100,6 @@ class Node:
                current = current.right_child
           print(current.key)
 
-
-
-
-
-        
 
 data  = Node(10)
 list1 = [6,3,1,6,98,3,7]

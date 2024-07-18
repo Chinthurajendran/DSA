@@ -123,7 +123,17 @@ class Linked_list:
                 break
             node = node.ref
             indx+=1
-
+    def delete_even(self):
+        if self.head is None:
+            print("List is empty")
+        else:
+            node = self.head
+            while node.ref is not None:
+                if node.ref.data % 2 == 0:
+                    node.ref = node.ref.ref
+                else:
+                    node = node.ref
+    
 
 
 
@@ -140,6 +150,6 @@ LL1.add_after(5,20)
 # LL1.end_delete()
 # LL1.after_delete(30)
 
-LL1.after_delete(60)
+# LL1.after_delete(60)
 
 LL1.Print_ll()
